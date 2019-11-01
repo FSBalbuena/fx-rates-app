@@ -2,7 +2,8 @@
 A simple FX Rate tha allows creation of new rates with a fee.
 
 ## Start
-
+*   `npm run buid`
+*   `npm start`
 
 ## Routes
 *   **/** - Home
