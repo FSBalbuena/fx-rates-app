@@ -1,0 +1,61 @@
+{
+  "name": "fx-rates-app",
+  "version": "1.0.0",
+  "description": "settle challenge",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack -w",
+    "start": "nodemon server/app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FSBalbuena/fx-rates-app.git"
+  },
+  "author": "fsbalbuena",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/cli": "^7.5.5",
+    "@babel/core": "^7.5.5",
+    "@babel/node": "^7.5.5",
+    "@babel/plugin-proposal-function-bind": "^7.2.0",
+    "@babel/preset-env": "^7.5.5",
+    "@babel/preset-react": "^7.0.0",
+    "@babel/preset-stage-0": "^7.0.0",
+    "@babel/register": "^7.5.5",
+    "babel-loader": "^8.0.6",
+    "babel-preset-stage-0": "^6.24.1",
+    "flow-bin": "^0.105.2",
+    "webpack": "^4.39.2",
+    "webpack-cli": "^3.3.7"
+  },
+  "dependencies": {
+    "@material-ui/core": "^4.4.2",
+    "@material-ui/icons": "^4.4.1",
+    "@material-ui/lab": "^4.0.0-alpha.26",
+    "axios": "^0.19.0",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "css-loader": "^3.2.0",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "faker": "^4.1.0",
+    "pg": "^7.12.1",
+    "pg-hstore": "^2.3.3",
+    "pg-native": "^3.0.0",
+    "prop-types": "^15.7.2",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0",
+    "react-redux": "^7.1.1",
+    "react-router-dom": "^5.0.1",
+    "redux": "^4.0.4",
+    "redux-logger": "^3.0.6",
+    "redux-thunk": "^2.3.0",
+    "sequelize": "^5.16.0",
+    "style-loader": "^1.0.0"
+  },
+  "bugs": {
+    "url": "https://github.com/FSBalbuena/fx-rates-app/issues"
+  },
+  "homepage": "https://github.com/FSBalbuena/fx-rates-app#readme"
+}
