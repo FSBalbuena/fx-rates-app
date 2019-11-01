@@ -3,6 +3,10 @@ const bodyParser = require('body-parser');
 const routes = require('./routes');
 const app = express();
 const path=require('path')
+const dotenv = require('dotenv');
+
+dotenv.config();
+const port=process.env.PORT
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -43,4 +47,4 @@ app.use((err, req, res, next) => {
   res.status(500).send(err);
 });
 
-app.listen(3001, ()=>console.log("Listen on port 3000") )
+app.listen(port, ()=>console.log(`Listen on port ${port}`) )
