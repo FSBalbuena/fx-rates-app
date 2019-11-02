@@ -3,9 +3,9 @@ import { connect } from 'react-redux';
 
 import RatesComponent from '../components/Rates'
 
-const ExampleContainer= ({exampleAction,isDesktop})=>{
+const ExampleContainer= ({isDesktop})=>{
     
-    return <RatesComponent/>
+    return <RatesComponent isDesktop={isDesktop}/>
 }
 
 /* react-redux settings */

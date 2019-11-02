@@ -7,13 +7,14 @@ import AppNav from '../components/AppNav'
 const NavbarContainer= ({location,isDesktop})=>{
     let isHome=location.pathname==="/home"
     let color=isHome?"#FFFFFF":null
-    
+
     const data={
         background:isHome?"transparent":null,
         links:[
-            {text:"Rates",props:{color,to:"/rates"}},
-            {text:"Create rate",props:{color,to:"/create"}
-        }]
+            {text:"Rates",color,to:"/rates"},
+            {text:"Create rate",color,to:"/create"}
+        ],
+        pathname:location.pathname
     }
     
     return <AppNav {...data}/>
