@@ -12,9 +12,10 @@ font-weight: ${props=>props.fw || "normal"};
 font-size: ${props=>props.fs || "4.37vmin"};
 line-height: 30px;
 text-decoration:none;
+cursor:pointer;
 `
 export const Background=styled.main`
-position:absolute;
+position:relative;
 left:0px;
 top:0px;
 height:${props=>props.height || "auto"};
@@ -37,16 +38,13 @@ width:${ props=>props.width || "100%"};
 margin:${props=>props.m || "0px"};
 
 `
-/**@media (min-width:800px){
-font-size: 1.75vw;
-line-height: 1.75vw;
-    } */
+
 export const Header=styled(Text)`
 font-size: 9.37vmin;
 line-height: 10.93vmin;
 
 `
-/***/
+
 
 
 /*--------------------------------------    NAVBAR    ------------------------------- */
@@ -72,7 +70,7 @@ font-weight: bold;
 font-size: 4.37vmin;
 line-height: 4.37vmin;
 color: ${props=>props.color?props.color:props.active?"#4488FF":"#272D3A"};
-padding-right:7.18vmin;
+margin-right:7.18vmin;
 z-index:11;
 :hover{
     color:"#272D3A";
@@ -86,13 +84,12 @@ z-index:11;
 /*--------------------------------------------------------------------- */
 
 export const Footer=styled.footer`
-position:fixed;
-bottom:0px;
+position:absolute;
+top:-12.81vmin;
 left:0px;
 width:100%;
-background:${props=>props.bg || "transparent"};
+background:${props=>props.bg || "#4E42E2"};
 height:12.81vmin;
-max-height:7.41vh;
 display:flex;
 justify-content:center;
 align-items:center
@@ -132,11 +129,7 @@ width:75vw;
 height:14.68vw;
 border:none;
 padding:3.75vw;
-margin-top:19vw;
-`
-export const FormButton=styled(Button)`
-
-
+margin-top:3.12vw;
 `
 
 export const Card=styled.article`
@@ -161,8 +154,41 @@ font-size: 5.62vw;
 line-height: 6.56vw;
 color: #FFFFFF;
 `
-export const CardRow=styled.div`
+export const FormBox=styled(Card)`
+margin:0px;
+padding-top:7.81vw;
+display:flex;
+flex-direction:column;
+justify-content:flex-start;
+align-items:center;
+min-height:77vh
+`
 
+export const FormLabel=styled.label`
+font-family: Roboto;
+font-style: normal;
+font-weight: bold;
+font-size: 4.37vmin;
+line-height: 5.93vmin;
+color: #272D3A;
+width:83%
+`
+export const FormButton=styled(Button)`
+display:block;
+width: 70%;
+height: 14.68vw;
+background: #4488FF;
+border: 1px solid #4488FF;
+box-sizing: border-box;
+box-shadow: 0px 1.25vw 1.25vw rgba(0, 0, 0, 0.25);
+border-radius: 1.56vw;
+font-family: Roboto;
+font-style: normal;
+font-weight: bold;
+font-size: 5.62vw;
+line-height: 6.56vw;
+color: #FFFFFF;
+margin:9vw 0px;
 `
 
         
