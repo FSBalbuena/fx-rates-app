@@ -9,8 +9,8 @@ export const UI_STOP_LOADING="UI_STOP_LOADING"
 export const UI_SET_ERRORS="UI_SET_ERRORS"
 //------------------------------CLEAR ERROR-------------------------------
 export const UI_CLEAR_ERRORS="UI_CLEAR_ERRORS"
-//-------------------------------UI MOBILE----------------------------------
-export const UI_SET_MOBILE="UI_SET_MOBILE"
-//-------------------------------UI MOBILE FALSE----------------------------------
-export const UI_CLEAR_MOBILE="UI_CLEAR_MOBILE"
+//-------------------------------UI DESKTOP----------------------------------
+export const UI_SET_DESKTOP="UI_SET_DESKTOP"
+//-------------------------------UI DESKTOP FALSE----------------------------------
+export const UI_CLEAR_DESKTOP="UI_CLEAR_DESKTOP"
 //---------------------------

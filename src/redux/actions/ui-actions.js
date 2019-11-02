@@ -1,22 +1,22 @@
 import { 
-    UI_SET_MOBILE,
-    UI_CLEAR_MOBILE
+    UI_SET_DESKTOP,
+    UI_CLEAR_DESKTOP
 } from '../constants';
 
 
-const setMobile=(data)=>({
-      type:UI_SET_MOBILE,
+const setDesktop=(data)=>({
+      type:UI_SET_DESKTOP,
       data
       })
-const clearMobile=(data)=>({
-      type:UI_CLEAR_MOBILE,
+const clearDesktop=(data)=>({
+      type:UI_CLEAR_DESKTOP,
       data
       })
 
     
-export const setUiLayout=(width)=>dispatch=>{
-          width<=600?
-          dispatch(setMobile(true))
+export const setUiLayout=(width,height)=>dispatch=>{
+          height<width?
+          dispatch(setDesktop(true))
           :
-          dispatch(clearMobile(false))             
+          dispatch(clearDesktop(false))             
           }

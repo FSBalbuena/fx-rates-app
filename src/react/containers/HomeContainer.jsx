@@ -2,16 +2,23 @@ import React,{useEffect} from 'react';
 import { connect } from 'react-redux';
 
 //import {exampleAction} from '../../redux/actions/example-actions'
-//import ExampleComponent from '../components/ExampleComponent'
+import Home from '../components/Home'
 
-const ExampleContainer= ({isMobile})=>{
-  
-    return <h1>HOME</h1>
+const ExampleContainer= ({isDesktop})=>{
+  const data={
+      text:{
+          header:"Manage all the Foreign Exchanges in one place",
+          button:"Start Free",
+          href:"/rates"
+      },
+      isDesktop
+  }
+    return <Home {...data}/>
 }
 
 /* react-redux settings */
 const mapStateToProps=(state,ownProps)=>({
-    isMobile:state.ui.isMobile
+    isDesktop:state.ui.isDesktop
 })
 const mapDispatchToProps=(dispatch,ownProps)=>({
 })

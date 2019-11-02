@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import {exampleAction} from '../../redux/actions/example-actions'
 import ExampleComponent from '../components/ExampleComponent'
 
-const ExampleContainer= ({exampleAction,isMobile})=>{
+const ExampleContainer= ({exampleAction,isDesktop})=>{
     useEffect(
         ()=>{
             exampleAction()
@@ -16,7 +16,7 @@ const ExampleContainer= ({exampleAction,isMobile})=>{
 
 /* react-redux settings */
 const mapStateToProps=(state,ownProps)=>({
-    isMobile:state.ui.isMobile
+    isDesktop:state.ui.isDesktop
 })
 const mapDispatchToProps=(dispatch,ownProps)=>({
     exampleAction:()=>dispatch(exampleAction())
