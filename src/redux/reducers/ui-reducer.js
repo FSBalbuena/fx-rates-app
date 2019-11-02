@@ -3,12 +3,12 @@ import {
     UI_CLEAR_ERRORS,
     UI_LOADING,
     UI_STOP_LOADING,
-    UI_SET_MOBILE,
-    UI_CLEAR_MOBILE
+    UI_SET_DESKTOP,
+    UI_CLEAR_DESKTOP
     } from '../constants';
     
 const defaultState={
-    isMobile:false,
+    isDesktop:false,
     loading:false,
     error:{}
 }
@@ -23,9 +23,9 @@ export default (state=defaultState,action)=>{
             return Object.assign({},state,{loading:true});
         case UI_STOP_LOADING:
             return Object.assign({},state,{loading:false});
-        case UI_SET_MOBILE:
-        case UI_CLEAR_MOBILE:
-            return Object.assign({},state,{isMobile:action.data});
+        case UI_SET_DESKTOP:
+        case UI_CLEAR_DESKTOP:
+            return Object.assign({},state,{isDesktop:action.data});
         default:
             return Object.assign({},state);
     } 
