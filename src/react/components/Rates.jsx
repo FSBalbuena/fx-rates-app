@@ -8,7 +8,7 @@ const styles=isDesktop=>({
     background:{
         display:"flex",
         justifyContent:"flex-start",
-        padding:"0px",
+        padding:"16vw",
         alignItems:"center",
         flexDirection:"column"
     },

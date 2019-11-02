@@ -6,19 +6,30 @@ const styles=isDesktop=>({
     text:{
         fontSize: isDesktop?"2.5vh":"",
         lineHeight: isDesktop?"2.5vh":"",
+    },
+    wrapper:{
+        position:"relative",
+        top:"0px",
+        left:"0px"
+    },
+    Footer:{
+        top:isDesktop?"-7.41vh":"",
+        height:isDesktop?"7.41vh":""
     }
 })
 
 const FooterComponent=({background,text,isDesktop})=>{
     const classes=styles(isDesktop)
     return (
-        <Footer bg={background}>
+        <div style={classes.wrapper}>
+        <Footer bg={background} style={classes.Footer}>
             <Text textAlign={"center"} 
             style={classes.text}
             >
                 {text}
             </Text>
         </Footer>
+        </div>
 )
 }
 
