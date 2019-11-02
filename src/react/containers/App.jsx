@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 
 /*----------------------------------Container------------------------------ */
 import HomeContainer from './HomeContainer'
+import RatesContainer from './RatesContainer'
 import AppNavContainer from './AppNavContainer'
 import FooterContainer from './FooterContainer'
 
@@ -26,6 +27,7 @@ const App= ({setUiLayout})=>{
             <AppNavContainer/>
             <Switch>
                 <Route path="/home" exact component={HomeContainer}/>
+                <Route path="/rates" exact component={RatesContainer}/>
                 <Redirect from="/" to="/home"/>
             </Switch>
             <FooterContainer/>

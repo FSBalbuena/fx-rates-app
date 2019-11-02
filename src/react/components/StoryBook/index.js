@@ -56,11 +56,13 @@ left:0px;
 top:0px;
 padding:${props=>props.p || "5vmin 0px"};
 width:100%;
+min-height:41px;
 height:5.28vmin;
 background:${props=>props.bg || "#f9f9f9"};
 display:flex;
 justify-content:flex-end;
-align-items:center
+align-items:center;
+z-index:10
 `
 
 
@@ -71,7 +73,7 @@ font-size: 4.37vmin;
 line-height: 4.37vmin;
 color: ${props=>props.color?props.color:props.active?"#4488FF":"#272D3A"};
 padding-right:7.18vmin;
-z-index:2;
+z-index:11;
 :hover{
     color:"#272D3A";
 };
@@ -115,8 +117,52 @@ font-size:7.35vmin;
 width:62.8vmin;
 
 `
+
+/*----------------------------------------------FORM--------------- */
+export const FormInput=styled.input`
+font-family: Roboto;
+font-style: normal;
+font-weight: bold;
+font-size: 6.25vw;
+line-height: 7.18vw;
+color: #272D3A;
+background: #FFFFFF;
+border-radius: 1.56vw;
+width:75vw;
+height:14.68vw;
+border:none;
+padding:3.75vw;
+margin-top:19vw;
+`
 export const FormButton=styled(Button)`
 
 
 `
+
+export const Card=styled.article`
+margin-top:8.43vw;
+width: 90vw;
+background: #F9F9F9;
+box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+border-radius: 1.56vw;
+`
+export const CardHeader=styled.header`
+width:100%;
+background: #4488FF;
+border-radius: 1.56vw 1.56vw 0px 0px;
+padding:2.5vw 3.75vw
+`
+export const CardTitle=styled.h3`
+margin:0px;
+font-family: Roboto;
+font-style: normal;
+font-weight: bold;
+font-size: 5.62vw;
+line-height: 6.56vw;
+color: #FFFFFF;
+`
+export const CardRow=styled.div`
+
+`
+
         
