@@ -38,5 +38,6 @@ const ratesFromEurToBase=({rates},base)=>{
 module.exports = {
     symbols,
     notAvailable,
-    ratesFromEurToBase
+    ratesFromEurToBase,
+    makePairOfRates
 }
