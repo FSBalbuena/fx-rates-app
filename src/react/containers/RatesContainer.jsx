@@ -4,17 +4,20 @@ import {fetchSymbols} from '../../redux/actions/symbols-actions'
 import {fetchCurrentRate} from '../../redux/actions/currentRate-actions'
 import RatesComponent from '../components/Rates'
 import _ from 'lodash'
-const RatesContainer= ({fetchSymbols,fetchCurrentRate,currentRate,isDesktop,symbols})=>{
+const RatesContainer= ({fetchSymbols,fetchCurrentRate,currentRate,ui,symbols})=>{
     useEffect(
         ()=>{
-            symbols.data.length || fetchSymbols()
-        }
+            _.isEmpty(symbols.data)?
+            fetchSymbols():
+            fetchCurrentRate(symbols.data[0])
+        },[symbols.data]
     )
     const handleChange=(e)=>fetchCurrentRate(e.target.value)
     
     const data={
         symbols:symbols.data,
-        isDesktop,
+        isDesktop:ui.isDesktop,
+        loading:ui.loading,
         handleChange,
         pairs:currentRate.data
         
@@ -30,7 +33,7 @@ const RatesContainer= ({fetchSymbols,fetchCurrentRate,currentRate,isDesktop,symb
 
 /* react-redux settings */
 const mapStateToProps=(state,ownProps)=>({
-    isDesktop:state.ui.isDesktop,
+    ui:state.ui,
     symbols:state.symbols,
     currentRate:state.currentRate
 })

@@ -1,37 +1,18 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import {Footer,Text} from './StoryBook'
+import {Footer,Text,Wrapper} from './StoryBook'
 
-const styles=isDesktop=>({
-    text:{
-        fontSize: isDesktop?"2.5vh":"",
-        lineHeight: isDesktop?"2.5vh":"",
-    },
-    wrapper:{
-        position:"relative",
-        top:"0px",
-        left:"0px"
-    },
-    Footer:{
-        top:isDesktop?"-7.41vh":"",
-        height:isDesktop?"7.41vh":""
-    }
-})
 
-const FooterComponent=({background,text,isDesktop})=>{
-    const classes=styles(isDesktop)
-    return (
-        <div style={classes.wrapper}>
-        <Footer bg={background} style={classes.Footer}>
-            <Text textAlign={"center"} 
-            style={classes.text}
-            >
-                {text}
-            </Text>
-        </Footer>
-        </div>
+
+const FooterComponent=({background,text,isDesktop})=>(
+        <Wrapper >
+            <Footer bg={background}>
+                <Text textAlign={"center"} >
+                    {text}
+                </Text>
+            </Footer>
+        </Wrapper>
 )
-}
 
 FooterComponent.propTypes={
     text:PropTypes.string,
