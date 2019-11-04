@@ -1,7 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import {Background,FormInput,Text} from './StoryBook'
+import {Background,Text} from './StoryBook'
 import RatesCard from './RatesCard'
+import CurrencySelector from './CurrencySelector'
 
 
 const styles=isDesktop=>({
@@ -19,30 +20,41 @@ const styles=isDesktop=>({
     }
 })
 
-const RatesComponent=({isDesktop})=>{
+const RatesComponent=({symbols,isDesktop,handleChange,pairs,loading})=>{
     const classes=styles(isDesktop)
     return (
         <Background bg={"#4E42E2"} style={classes.background}>
-            <FormInput value={"USD"}></FormInput>
-            <RatesCard>
-                <Text style={classes.rateText}>USD/ARS: 0000.00</Text>
-                <Text style={classes.rateText}>ARS/USD: 0000.00</Text>
-            </RatesCard>
-            <RatesCard>
-                <Text style={classes.rateText}>USD/ARS: 0000.00</Text>
-                <Text style={classes.rateText}>ARS/USD: 0000.00</Text>
-            </RatesCard>
-            <RatesCard>
-                <Text style={classes.rateText}>USD/ARS: 0000.00</Text>
-                <Text style={classes.rateText}>ARS/USD: 0000.00</Text>
-            </RatesCard>
+            <CurrencySelector name="base"
+             options={symbols} 
+             placeholder={'Choose currency'}
+             onChange={handleChange}/>
+             {loading?"...Loading":pairs.map(pair=>(
+                <RatesCard title={pair.name} key={pair.name}>
+                    {pair.rates.map(rate=>(
+                        <Text style={classes.rateText} key={rate.name}>
+                        {`${rate.name}:${rate.rate}`}
+                        </Text>
+                    ))}
+                 </RatesCard>
+             ))}
+            
+           
         </Background>
     )
 }
 RatesComponent.propTypes={
-    isDesktop:PropTypes.bool
+    symbols:PropTypes.array,
+    isDesktop:PropTypes.bool,
+    handleChange:PropTypes.func,
+    pairs:PropTypes.array,
+    loading:PropTypes.bool,
+
 }
 RatesComponent.defaultProps={
-    isDesktop:false
+    symbols:[],
+    isDesktop:false,
+    handleChange:()=>console.log("changes on rates"),
+    pairs:[],
+    loading:true
 }
 export default RatesComponent
