@@ -14,3 +14,11 @@ export const UI_SET_DESKTOP="UI_SET_DESKTOP"
 //-------------------------------UI DESKTOP FALSE----------------------------------
 export const UI_CLEAR_DESKTOP="UI_CLEAR_DESKTOP"
 //---------------------------
+
+//-------------------------------CONSTANTS THAT AFFECTS UI--------------------------
+//------------------------------LOADING TRUE
+export const FETCH_SYMBOLS="FETCH_SYMBOLS"
+export const CLEAR_SYMBOLS="CLEAR_SYMBOLS"
+export const SUCCESS_ON_FETCH_SYMBOLS="SUCCESS_ON_FETCH_SYMBOLS"
+export const ERROR_ON_FETCH_SYMBOLS="ERROR_ON_FETCH_SYMBOLS"
+
