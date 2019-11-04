@@ -40,10 +40,7 @@ router.post('/', (req, res, next) => {
     .then(api=>api.data)
     .then(apiData=> makePairOfRates(apiData.rates,base,destination))
     .then(rates=>res.send({rates}))
-    .catch(err=>{
-        res.status(err.status || 500)
-        .send({message:err.message || "Something went wrong"})
-    }) 
+    .catch(catchError) 
 });
 
 router.post('/custom-rate', (req, res, next) => {
