@@ -12,16 +12,8 @@ const styles=(isDesktop)=>({
     },
     header:{
         width:isDesktop?"70%":"89vmin",
-        maxWidth:isDesktop?"36.25vw":"",
-        fontSize:isDesktop?"7vh":"",
-        lineHeight:isDesktop?"7vh":"",
+        maxWidth:isDesktop?"36vw":"",
         textAlign:"center"
-    },
-    button:{
-        width:isDesktop?"25.55vw":"",
-        fontSize:isDesktop?"4.19vh":"",
-        lineHeight:isDesktop?"4.19vh":"",
-        height:isDesktop?"9.27vh":"",
     }
 })
 const HomeComponent=({text,isDesktop})=>{
@@ -32,11 +24,10 @@ const HomeComponent=({text,isDesktop})=>{
                 {text.header}
             </Header>
             <AppLink to={text.href}>
-                <HomeButton style={classes.button} >
+                <HomeButton >
                     {text.button}
                 </HomeButton>
             </AppLink>
-            
         </Background>
     )
 }

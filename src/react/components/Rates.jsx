@@ -1,22 +1,20 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import {Background,Text} from './StoryBook'
-import RatesCard from './RatesCard'
+import {Background,Header} from './StoryBook'
 import CurrencySelector from './CurrencySelector'
-
+import SkeletonPairList from './skeleton/SkeletonPairList'
+import RatesPairList from './RatesPairList'
 
 const styles=isDesktop=>({
     background:{
         display:"flex",
-        justifyContent:"flex-start",
-        padding:"16vw",
+        justifyContent:isDesktop?"space-around":"flex-start",
+        padding:isDesktop?"20vh 0px":"16vw 0px",
         alignItems:"center",
         flexDirection:"column"
     },
-    rateText:{
-        color: "#848484",
-        padding:"2.81vw 5.62vw",
-        margin:"0px"
+    selector:{
+        margin:isDesktop?"0px":"3.12vw"
     }
 })
 
@@ -24,21 +22,18 @@ const RatesComponent=({symbols,isDesktop,handleChange,pairs,loading})=>{
     const classes=styles(isDesktop)
     return (
         <Background bg={"#4E42E2"} style={classes.background}>
-            <CurrencySelector name="base"
-             options={symbols} 
-             placeholder={'Choose currency'}
+            {isDesktop && 
+            <Header textAlign="center">
+                Select a currency
+            </Header>}
+            <CurrencySelector style={classes.selector}
+            name="base"
+             options={symbols}
              onChange={handleChange}/>
-             {loading?"...Loading":pairs.map(pair=>(
-                <RatesCard title={pair.name} key={pair.name}>
-                    {pair.rates.map(rate=>(
-                        <Text style={classes.rateText} key={rate.name}>
-                        {`${rate.name}:${rate.rate}`}
-                        </Text>
-                    ))}
-                 </RatesCard>
-             ))}
-            
-           
+             {loading?
+             <SkeletonPairList />
+             :
+             <RatesPairList pairs={pairs}/>}
         </Background>
     )
 }

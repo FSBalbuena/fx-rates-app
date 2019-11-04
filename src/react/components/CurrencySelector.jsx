@@ -2,9 +2,8 @@ import React from 'react'
 import {FormSelect} from './StoryBook'
 import PropTypes from 'prop-types'
 
-const CurrencySelector=({name,onChange,options,placeholder})=>(
-    <FormSelect name={name} onChange={onChange} defaultValue={""}>
-        <option value="" disabled hidden>{placeholder}</option>
+const CurrencySelector=({name,options,...rest})=>(
+    <FormSelect name={name} {...rest}>
        {options.map( symbol=>(
         <option 
            key={symbol} 
