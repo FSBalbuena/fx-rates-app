@@ -205,4 +205,7 @@ height:14.68vw;
 border:none;
 padding:3.75vw;
 margin-top:3.12vw;
+-webkit-appearance: none;
+-moz-appearance: none;
+appearance: none;
 `

@@ -19,9 +19,9 @@ import {
   
   
         
-export const fetchCurrentRate=()=>dispatch=>{
+export const fetchCurrentRate=(base)=>dispatch=>{
         dispatch(onFetchingCurrentRate())
-        return axios.get('api/rates')
+        return axios.get(`api/rates/${base}`)
         .then(res=>res.data)
         .then(data=>dispatch(setCurrentRate(data.data)))
         .catch(err=>dispatch(setCurrentRateError(err)))
