@@ -1,7 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import {Background,FormInput,Text} from './StoryBook'
+import {Background,Text} from './StoryBook'
 import RatesCard from './RatesCard'
+import CurrencySelector from './CurrencySelector'
 
 
 const styles=isDesktop=>({
@@ -19,11 +20,13 @@ const styles=isDesktop=>({
     }
 })
 
-const RatesComponent=({isDesktop})=>{
+const RatesComponent=({symbols,isDesktop,handleChange})=>{
     const classes=styles(isDesktop)
     return (
         <Background bg={"#4E42E2"} style={classes.background}>
-            <FormInput value={"USD"}></FormInput>
+            <CurrencySelector name="base"
+             options={symbols} 
+             onChange={handleChange}/>
             <RatesCard>
                 <Text style={classes.rateText}>USD/ARS: 0000.00</Text>
                 <Text style={classes.rateText}>ARS/USD: 0000.00</Text>

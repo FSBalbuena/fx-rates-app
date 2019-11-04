@@ -191,4 +191,18 @@ color: #FFFFFF;
 margin:9vw 0px;
 `
 
-        
+export const FormSelect=styled.select`
+font-family: Roboto;
+font-style: normal;
+font-weight: bold;
+font-size: 6.25vw;
+line-height: 7.18vw;
+color: #272D3A;
+background: #FFFFFF;
+border-radius: 1.56vw;
+width:75vw;
+height:14.68vw;
+border:none;
+padding:3.75vw;
+margin-top:3.12vw;
+`

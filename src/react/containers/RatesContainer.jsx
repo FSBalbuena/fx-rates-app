@@ -2,22 +2,25 @@ import React,{useEffect} from 'react';
 import { connect } from 'react-redux';
 import {fetchSymbols} from '../../redux/actions/symbols-actions'
 import RatesComponent from '../components/Rates'
-
-const ExampleContainer= ({fetchSymbols,isDesktop,symbols})=>{
+import _ from 'lodash'
+const RatesContainer= ({fetchSymbols,isDesktop,symbols})=>{
     useEffect(
         ()=>{
             symbols.data.length || fetchSymbols()
         }
     )
+    const handleChange=(e)=>console.log(e.target.value)
+    
     const data={
         symbols:symbols.data,
         isDesktop,
+        handleChange
+        
     }
-
     return symbols.loading?
     <h1>loading...</h1>
     :
-    symbols.error?
+    !_.isEmpty(symbols.error)?
     <h1>{symbols.error}</h1>
     :
     <RatesComponent {...data}/>
@@ -32,4 +35,4 @@ const mapDispatchToProps=(dispatch,ownProps)=>({
     fetchSymbols:()=>dispatch(fetchSymbols())
 })
 
-export default connect(mapStateToProps,mapDispatchToProps)(ExampleContainer)
+export default connect(mapStateToProps,mapDispatchToProps)(RatesContainer)
