@@ -1,9 +1,12 @@
 const router=require("express").Router()
 const axios =require("axios")
+
 const {symbols,
     availableSymbols,
     ratesFromEurToBase,
-    makePairOfRates,CustomRatesPairs} = require('./utils')
+    makePairOfRates} = require('../utils/makeRates')
+
+const {CustomRatesPairs,isCustomRatePostOk} = require('../utils/customRate')
 
 //configuration for axios
 axios.interceptors.response.use(
@@ -29,7 +32,7 @@ router.get('/', (req, res, next) => {
 router.get("/:id", (req,res,next)=>{
     let base=req.params.id.toUpperCase()
     //check for symbol available
-    if(!availableSymbols(base)){
+    if(!availableSymbols(base).status){
         res.status(404).send({message:"Not available currency"})
     }
 
@@ -40,11 +43,16 @@ router.get("/:id", (req,res,next)=>{
 })
 
 //-----------------------------------------------------------------------------
-
+/*
+{
+    base,
+    destination
+}
+*/
 router.post('/', (req, res, next) => {
     const {base,destination}=req.body
     //check if symbols are correct
-    if(!availableSymbols(base,destination)){
+    if(!availableSymbols(base,destination).status){
         res.status(401).send({message:"Not available pair of currency"})
     }
 
@@ -56,11 +64,20 @@ router.post('/', (req, res, next) => {
 
 //-----------------------------------------------------------------------------
 /*
-body:{
-    base,destination,fee
-} */
+{
+    base,
+    destination,
+    fee:{
+        type,
+        value
+    }
+}
+*/
 router.post('/custom-rate', (req, res, next) => {
-    
+    let checkBody=isCustomRatePostOk(req.body)
+    if(!checkBody.status){
+        res.status(401).send({errors:checkBody.errors})
+    }
     axios.get(fixerApi())
     .then(apiData=> CustomRatesPairs(apiData.rates,req.body))
     .then(rates=>res.send(rates))
