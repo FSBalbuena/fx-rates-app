@@ -30,7 +30,7 @@ router.get('/', (req, res, next) => {
 //-----------------------------------------------------------------------------
 
 router.get("/:id", (req,res,next)=>{
-    let base=req.params.id.toUpperCase()
+    let base=req.params.id
     //check for symbol available
     if(!availableSymbols(base).status){
         res.status(404).send({message:"Not available currency"})
