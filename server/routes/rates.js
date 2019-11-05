@@ -1,9 +1,9 @@
 const router=require("express").Router()
 const axios =require("axios")
 const {symbols,
-    notAvailable,
+    availableSymbols,
     ratesFromEurToBase,
-    makePairOfRates} = require('./utils')
+    makePairOfRates,CustomRatesPairs} = require('./utils')
 
 //configuration for axios
 axios.interceptors.response.use(
@@ -17,17 +17,19 @@ const catchError=(res)=>err=>{
     res.status(err.status || 500)
     .send({message:err.message || "Something went wrong"})
 }
-//----------
 
+//-----------------------------------------------------------------------------
 
 router.get('/', (req, res, next) => {
     res.status(200).send({symbols}) 
 });
 
+//-----------------------------------------------------------------------------
+
 router.get("/:id", (req,res,next)=>{
     let base=req.params.id.toUpperCase()
     //check for symbol available
-    if(notAvailable(base)){
+    if(!availableSymbols(base)){
         res.status(404).send({message:"Not available currency"})
     }
 
@@ -37,20 +39,31 @@ router.get("/:id", (req,res,next)=>{
     .catch(catchError(res))
 })
 
+//-----------------------------------------------------------------------------
+
 router.post('/', (req, res, next) => {
     const {base,destination}=req.body
     //check if symbols are correct
-    if(notAvailable(base) || notAvailable(destination) ){
+    if(!availableSymbols(base,destination)){
         res.status(401).send({message:"Not available pair of currency"})
     }
-    
+
     axios.get(fixerApi())
     .then(apiData=> makePairOfRates(apiData.rates,base,destination))
     .then(rates=>res.send({rates}))
     .catch(catchError(res)) 
 });
 
+//-----------------------------------------------------------------------------
+/*
+body:{
+    base,destination,fee
+} */
 router.post('/custom-rate', (req, res, next) => {
     
+    axios.get(fixerApi())
+    .then(apiData=> CustomRatesPairs(apiData.rates,req.body))
+    .then(rates=>res.send(rates))
+    .catch(catchError(res)) 
 });
 module.exports=router
