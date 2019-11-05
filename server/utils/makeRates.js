@@ -19,7 +19,7 @@ const divide=(first,second)=>fix(first/second)
 const makePairName=(base,destination,divider="/")=>`${base}${divider}${destination}`.toUpperCase()
 
 const makePairOfRates=(ratesOnEur,base,destination)=>{
-        [base,direction]=[base,direction].map(item=>item.toUpperCase())
+        [base,destination]=[base,destination].map(item=>item.toUpperCase())
         let direct={
             name:makePairName(base,destination),
             rate:divide(ratesOnEur[destination],ratesOnEur[base])
