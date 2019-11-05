@@ -16,14 +16,14 @@ import axios from 'axios'
           data
           })
 
-    const onFetchingRates=()=>({
+    const onFetchingSingleRatesPair=()=>({
           type:FETCH_SINGLE_RATES_PAIR
           })
   
   
         
-export const fetchRates=(body)=>dispatch=>{
-        dispatch(onFetchingRates())
+export const fetchSingleRatesPair=(body)=>dispatch=>{
+        dispatch(onFetchingSingleRatesPair())
         return axios.post(`api/rates`,body)
         .then(res=>res.data)
         .then(data=>dispatch(setSingleRatesPair(data.rates)))
