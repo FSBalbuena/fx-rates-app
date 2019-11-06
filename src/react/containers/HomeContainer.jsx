@@ -1,26 +1,15 @@
-import React,{useEffect} from 'react';
-import { connect } from 'react-redux';
+import React from 'react';
+import Home from '../components/Home/'
 
-//import {exampleAction} from '../../redux/actions/example-actions'
-import Home from '../components/Home'
-
-const ExampleContainer= ({isDesktop})=>{
-  const data={
-      text:{
+const HomeContainer= ()=>{
+  const text={
           header:"Manage all the Foreign Exchanges in one place",
           button:"Start Free",
           href:"/rates"
-      },
-      isDesktop
-  }
-    return <Home {...data}/>
+      }
+  
+    return <Home text={text}/>
 }
 
-/* react-redux settings */
-const mapStateToProps=(state,ownProps)=>({
-    isDesktop:state.ui.isDesktop
-})
-const mapDispatchToProps=(dispatch,ownProps)=>({
-})
 
-export default connect(mapStateToProps,mapDispatchToProps)(ExampleContainer)
+export default HomeContainer

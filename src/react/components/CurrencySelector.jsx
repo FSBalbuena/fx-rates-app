@@ -1,30 +1,26 @@
 import React from 'react'
-import {Selector} from './StoryBook'
 import PropTypes from 'prop-types'
+import {FormLabel,FormSelect} from './StoryBook'
 
-const CurrencySelector=({name,options,...rest})=>(
-    <Selector name={name} {...rest}>
-       {options.map( symbol=>(
-        <option 
-           key={symbol} 
-           value={symbol}>
-            {symbol}
-        </option>
-       ))}
-    </Selector>
-)
+/*Part of Create component*/
+const CurrencySelector=({label,name,options})=>( 
+            <FormLabel>{label}
+                <FormSelect name={name}>
+                    {options.map(option=>(
+                        <option key={option}
+                        value={option}
+                        >
+                        {option}
+                        </option>
+                    ))}
+                </FormSelect>
+            </FormLabel>)
 
 CurrencySelector.propTypes={
+    label:PropTypes.string,
     name:PropTypes.string,
-    placeholder:PropTypes.string,
-    onChange:PropTypes.func,
     options:PropTypes.array
 }
-CurrencySelector.defaultProps={
-    name:"base",
-    placeholder:"Choose",
-    onChange:()=>console.log("change on CurrencySelector"),
-    options:[]
 
-}
+
 export default CurrencySelector

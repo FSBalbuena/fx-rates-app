@@ -2,11 +2,10 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import {Background,
      FormBox,
-      FormLabel,
-      FormInput,
       FormButton,
-      Rate,
-      FormSelect} from './StoryBook'
+      Rate} from './StoryBook'
+import FeePicker from './FeePicker';
+import CurrencySelector from './CurrencySelector';
 
 
 const styles=isDesktop=>({
@@ -15,46 +14,32 @@ const styles=isDesktop=>({
         justifyContent:"center",
         alignItems:"center",
         padding:isDesktop?"6vh 0px":"16vw 0px"
-    },
-    feeWrapper:{
-        display:"flex",
-        justifyItems:"center",
-        alignItems:"center",
-        width:"100%"        
-    },
-    feeSelector:{
-        width:"30%",
-        borderRadius:isDesktop?"0px 0.735vh 0.735vh 0px":"0px 1.56vw 1.56vw 0px"
-    },
-    feeInput:{
-        width:"70%",
-        borderRadius:isDesktop?"0.735vh 0px 0px 0.735vh":"1.56vw 0px 0px 1.56vw"
     }
 })
 
-const RatesComponent=({isDesktop})=>{
+const Create=({isDesktop})=>{
     const classes=styles(isDesktop)
     return (
         <Background bg={"#4E42E2"} style={classes.background}>
            <FormBox>
-               {["base","destination"].map(symbol=>(
-                   <FormLabel>Base Currency
-                   <FormSelect name="symbol">
-                   <option value="USD">USD</option>
-                   <option value="ARS">ARS</option>
-                   </FormSelect>
-                  </FormLabel>
-               ))}
+               <CurrencySelector 
+               name="base"
+               label="Base currency"
+               options={["USD","EUR"]}
+               />
+               <CurrencySelector 
+               name="destination"
+               label="Destination currency"
+               options={["USD","EUR"]}
+               />
                <Rate>USD/ARS : 64.00</Rate>
-               <FormLabel>Base Currency
-                <div style={classes.feeWrapper}>
-                <FormInput style={classes.feeInput}/>
-                <FormSelect style={classes.feeSelector}>
-                    <option value="amount">$</option>
-                    <option value="percent">%</option>
-                </FormSelect>
-                </div>
-               </FormLabel>
+               <FeePicker
+               label={"Fee"}
+               inputName={"fee.value"}
+               selectName={"fee.type"}
+               feeTypes={[{value:"amount",text:"$"}
+               ,{value:"percent",text:"%"}]}
+               />
                <FormButton >
                    Create
               </FormButton>
@@ -62,10 +47,10 @@ const RatesComponent=({isDesktop})=>{
         </Background>
     )
 }
-RatesComponent.propTypes={
+Create.propTypes={
     isDesktop:PropTypes.bool
 }
-RatesComponent.defaultProps={
+Create.defaultProps={
     isDesktop:false
 }
-export default RatesComponent
+export default Create

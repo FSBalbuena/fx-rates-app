@@ -1,7 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import {Background,Header} from './StoryBook'
-import CurrencySelector from './CurrencySelector'
+import {Background,Header,Selector} from './StoryBook'
 import SkeletonPairList from './skeleton/SkeletonPairList'
 import RatesPairList from './RatesPairList'
 
@@ -26,10 +25,17 @@ const RatesComponent=({symbols,isDesktop,handleChange,pairs,loading})=>{
             <Header textAlign="center">
                 Select a currency
             </Header>}
-            <CurrencySelector style={classes.selector}
-            name="base"
-             options={symbols}
-             onChange={handleChange}/>
+            <Selector name="base"
+            style={classes.selector}
+            onChange={handleChange}>
+               {symbols.map( symbol=>(
+                <option 
+                   key={symbol} 
+                   value={symbol}>
+                    {symbol}
+                </option>
+               ))}
+            </Selector>
              {loading?
              <SkeletonPairList />
              :
