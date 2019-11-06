@@ -60,8 +60,8 @@ left:0px;
 top:0px;
 padding:${props=>props.p || "5vmin 0px"};
 width:100%;
+height:5vmin;
 min-height:41px;
-height:5.28vmin;
 background:${props=>props.bg || "#f9f9f9"};
 display:flex;
 justify-content:flex-end;
@@ -122,21 +122,7 @@ width:${props=>props.isDesktop?"22.55vw":"62.8vmin"};
 `)
 
 /*----------------------------------------------FORM--------------- */
-export const FormInput=styled.input`
-font-family: Roboto;
-font-style: normal;
-font-weight: bold;
-font-size: 6.25vw;
-line-height: 7.18vw;
-color: #272D3A;
-background: #FFFFFF;
-border-radius: 1.56vw;
-width:75vw;
-height:14.68vw;
-border:none;
-padding:3.75vw;
-margin-top:3.12vw;
-`
+
 export const CardList=WithLayout(styled.div`
 width:100%;
 display:flex;
@@ -175,44 +161,46 @@ padding:${props=>props.isDesktop?"0.78vw 1.56vw":"2.81vw 5.62vw"};
 margin:0px
 `)
 
-export const FormBox=styled(Card)`
+export const FormBox=WithLayout(styled(Card)`
 margin:0px;
-padding-top:7.81vw;
+padding-top:${props=>props.isDesktop?"3vmin":"7vmin"};
 display:flex;
 flex-direction:column;
 justify-content:flex-start;
 align-items:center;
-min-height:77vh
-`
+width:${props=>props.isDesktop?"45vh":"90vw"};
+min-height:${props=>props.isDesktop?"65vh":"77vh"}
+`)
 
-export const FormLabel=styled.label`
+export const FormLabel=WithLayout(styled.label`
 font-family: Roboto;
 font-style: normal;
 font-weight: bold;
-font-size: 4.37vmin;
-line-height: 5.93vmin;
+font-size: ${props=>props.isDesktop?"2vh":"4.37vw"};
+line-height: ${props=>props.isDesktop?"2.4vh":"5.93vw"};
 color: #272D3A;
 width:83%
-`
-export const FormButton=styled(Button)`
+`)
+
+export const FormButton=WithLayout(styled(Button)`
+font-family: Roboto;
+font-style: normal;
+font-weight: bold;
+font-size: ${props=>props.isDesktop?"2.65vh":"5.62vw"};
+line-height:${props=>props.isDesktop?"3.12vh":"6.56vw"} ;
 display:block;
 width: 70%;
-height: 14.68vw;
+height: 6.83vh;
 background: #4488FF;
 border: 1px solid #4488FF;
 box-sizing: border-box;
-box-shadow: 0px 1.25vw 1.25vw rgba(0, 0, 0, 0.25);
-border-radius: 1.56vw;
-font-family: Roboto;
-font-style: normal;
-font-weight: bold;
-font-size: 5.62vw;
-line-height: 6.56vw;
+box-shadow: 0px 1.25vmin 1.25vmin rgba(0, 0, 0, 0.25);
+border-radius: ${props=>props.isDesktop?"0.735vh":"1.56vw"};
 color: #FFFFFF;
-margin:9vw 0px;
-`
+margin:6.6% 0px;
+`)
 
-export const FormSelect=WithLayout(styled.select`
+export const Selector=WithLayout(styled.select`
 font-family: Roboto;
 font-style: normal;
 font-weight: bold;
@@ -229,5 +217,52 @@ padding:${props=>props.isDesktop?"1.25vw":"3.75vw"};
 appearance: none;
 cursor:pointer;
 background: url(images/arrow-down.png) 96% / 10% no-repeat #EEE;
-background-color:" #FFFFFF";
+background-color:#FFFFFF;
+`)
+
+
+export const FormInput=WithLayout(styled.input`
+font-family: Roboto;
+font-style: normal;
+font-weight: bold;
+font-size: ${props=>props.isDesktop?"2.92vh":"6.25vw"};
+line-height:${props=>props.isDesktop?"3.12vh":"7.18vw"} ;
+color: #272D3A;
+background: #FFFFFF;
+border-radius: ${props=>props.isDesktop?"0.735vh":"1.56vw"};
+width:100%;
+height:${props=>props.isDesktop?"6.83vh;":"14.68vw"} ;
+border:none;
+padding:0px 3.75vmin;
+margin:3.12vmin 0px;
+`)
+
+export const FormSelect=WithLayout(styled.select`
+font-family: Roboto;
+font-style: normal;
+font-weight: bold;
+font-size: ${props=>props.isDesktop?"2.92vh":"6.25vw"};
+line-height:${props=>props.isDesktop?"3.12vh":"7.18vw"} ;
+color: #272D3A;
+width:100%;
+border-radius: ${props=>props.isDesktop?"0.735vh":"1.56vw"};
+height:${props=>props.isDesktop?"6.83vh;":"14.68vw"} ;
+border:none;
+padding:0px 3.12vmin;
+margin:3.12vmin 0px;
+-webkit-appearance: none;
+-moz-appearance: none;
+appearance: none;
+cursor:pointer;
+background: url(images/arrow-down.png) 96% / 10% no-repeat #EEE;
+background-color:#FFFFFF;
+`)
+
+
+export const Rate=WithLayout(styled(Text)`
+ color:#4488FF;
+ text-align:center;
+ margin:4vmin 0px;
+ font-size:${props=>props.isDesktop?"2vh":"4.37vw"} ;
+ line-height:${props=>props.isDesktop?"2.4vh":"5.93vw"} ;
 `)

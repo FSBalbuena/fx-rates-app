@@ -1,9 +1,9 @@
 import React from 'react'
-import {FormSelect} from './StoryBook'
+import {Selector} from './StoryBook'
 import PropTypes from 'prop-types'
 
 const CurrencySelector=({name,options,...rest})=>(
-    <FormSelect name={name} {...rest}>
+    <Selector name={name} {...rest}>
        {options.map( symbol=>(
         <option 
            key={symbol} 
@@ -11,7 +11,7 @@ const CurrencySelector=({name,options,...rest})=>(
             {symbol}
         </option>
        ))}
-    </FormSelect>
+    </Selector>
 )
 
 CurrencySelector.propTypes={
