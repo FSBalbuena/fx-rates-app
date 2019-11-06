@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import {Card, CardHeader, CardTitle} from './StoryBook'
 
-/*Part of Rates component */
+/*Part of RatesPairList component inside Rates Folder */
 const RatesCard=({title,children})=>(
         <Card>
             <CardHeader>

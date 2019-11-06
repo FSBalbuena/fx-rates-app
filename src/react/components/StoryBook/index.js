@@ -10,7 +10,7 @@ align-items:center;
 `
 /*--------------------------------------  GENERAL   ------------------------------- */
 
-const BaseSelector=styled.select`
+export const BaseSelector=styled.select`
 font-family: Roboto;
 font-style: normal;
 font-weight: bold;
@@ -114,18 +114,6 @@ color: #848484;
 padding:${props=>props.isDesktop?"0.78vw 1.56vw":"2.81vw 5.62vw"};
 margin:0px
 `)
-
-export const Selector=WithLayout(styled(BaseSelector)`
-font-size: ${props=>props.isDesktop?"2.10vw":"6.25vw"};
-line-height:${props=>props.isDesktop?"2.43vw":"7.18vw"} ;
-border-radius: ${props=>props.isDesktop?"0.5vw":"1.56vw"};
-width:${props=>props.isDesktop?"25.13vw":"75vw"};
-height:${props=>props.isDesktop?"4.95vw":"14.68vw"};
-padding:${props=>props.isDesktop?"1.25vw":"3.75vw"};
-background: url(images/arrow-down.png) 96% / 10% no-repeat #EEE;
-background-color:#FFFFFF;
-`)
-
 
 /*----------------------------------------------CREATE COMPONENTS----------------------------------------------- */
 export const FormBox=WithLayout(styled(Card)`
