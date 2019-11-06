@@ -2,9 +2,9 @@ import React,{useEffect} from 'react';
 import { connect } from 'react-redux';
 import {fetchSymbols} from '../../redux/actions/symbols-actions'
 import {fetchRates} from '../../redux/actions/rates-actions'
-import RatesComponent from '../components/Rates'
+import RatesComponent from '../components/Rates/'
 import _ from 'lodash'
-const RatesContainer= ({fetchSymbols,fetchRates,rates,ui,symbols})=>{
+const RatesContainer= ({fetchSymbols,fetchRates,rates,loading,symbols})=>{
     useEffect(
         ()=>{
             _.isEmpty(symbols.data)?
@@ -15,9 +15,9 @@ const RatesContainer= ({fetchSymbols,fetchRates,rates,ui,symbols})=>{
     const handleChange=(e)=>fetchRates(e.target.value)
     
     const data={
-        symbols:symbols.data,
-        isDesktop:ui.isDesktop,
-        loading:ui.loading,
+        options:symbols.data.map(symbol=>({value:symbol,content:symbol})),
+        title:"Select a currency",
+        loading,
         handleChange,
         pairs:rates.data
         
@@ -33,7 +33,7 @@ const RatesContainer= ({fetchSymbols,fetchRates,rates,ui,symbols})=>{
 
 /* react-redux settings */
 const mapStateToProps=(state,ownProps)=>({
-    ui:state.ui,
+    loading:state.ui.loading,
     symbols:state.symbols,
     rates:state.rates
 })

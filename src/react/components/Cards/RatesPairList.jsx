@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import {CardText,CardList} from './StoryBook'
+import {CardText,CardList} from './index'
 import RatesCard from './RatesCard'
 
 

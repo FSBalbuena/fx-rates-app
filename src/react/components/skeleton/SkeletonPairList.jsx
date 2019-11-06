@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import {CardText,CardList} from '../StoryBook'
-import RatesCard from '../RatesCard'
+import {CardText,CardList} from '../Cards'
+import RatesCard from '../Cards/RatesCard'
 
     
 const SkeletonPairList=({cards})=>{

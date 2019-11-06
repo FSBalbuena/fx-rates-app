@@ -1,10 +1,9 @@
-import React,{useEffect} from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import {withRouter} from 'react-router-dom'
-import AppNav from '../components/AppNav'
-/*generally containers dispatch actions*/
+import AppNav from '../components/AppNav/'
 
-const NavbarContainer= ({location,isDesktop})=>{
+const AppNavContainer= ({location})=>{
     let isHome=location.pathname==="/home"
     let color=isHome?"#FFFFFF":null
 
@@ -22,11 +21,7 @@ const NavbarContainer= ({location,isDesktop})=>{
 
 /* react-redux settings */
 const mapStateToProps=(state,ownProps)=>({
-    isDesktop:state.ui.isDesktop,
     location:ownProps.location
-
-})
-const mapDispatchToProps=(dispatch,ownProps)=>({
 })
 
-export default withRouter(connect(mapStateToProps,mapDispatchToProps)(NavbarContainer))
+export default withRouter(connect(mapStateToProps,null)(AppNavContainer))
