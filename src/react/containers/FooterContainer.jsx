@@ -1,26 +1,20 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import {withRouter} from 'react-router-dom'
-import Footer from '../components/FooterComponent'
-/*generally containers dispatch actions*/
+import FooterComponent from '../components/Footer/'
 
-const FooterContainer= ({location,isDesktop})=>{
+const FooterContainer= ({pathname})=>{
     const data={
-        background:location.pathname==="/home"?"#272D3A":null,
-        text:"Settle Currency Chalenge",
-        isDesktop
+        background:pathname==="/home"?"#272D3A":null,
+        text:"Settle Currency Chalenge"
     }
     
-    return <Footer {...data}/>
+    return <FooterComponent {...data}/>
 }
 
 /* react-redux settings */
 const mapStateToProps=(state,ownProps)=>({
-    isDesktop:state.ui.isDesktop,
-    location:ownProps.location
-
-})
-const mapDispatchToProps=(dispatch,ownProps)=>({
+    pathname:ownProps.location.pathname
 })
 
-export default withRouter(connect(mapStateToProps,mapDispatchToProps)(FooterContainer))
+export default withRouter(connect(mapStateToProps,null)(FooterContainer))

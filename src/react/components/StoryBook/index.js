@@ -33,12 +33,6 @@ text-decoration:none;
 cursor:pointer;
 `
 
-export const Wrapper=styled.div`
-position:relative;
-top:0px;
-left:0px;
-`
-
 export const Background=styled.main`
 position:relative;
 left:0px;
@@ -70,16 +64,6 @@ line-height: ${props=>props.isDesktop?"7vh":"10.93vw"};
 `)
 
 /*------------------------------------------------------------HOME COMPONENTS--------- */
-
-export const Footer=WithLayout(styled.footer`
-${flexCenterConfig}
-position:absolute;
-top:${props=>props.isDesktop?"-7.41vh":"-12.81vw"};
-left:0px;
-width:100%;
-background:${props=>props.bg || "#4E42E2"};
-height:${props=>props.isDesktop?"7.41vh":"12.81vw"};
-`)
 
 export const Button=styled.button`
 cursor:pointer;

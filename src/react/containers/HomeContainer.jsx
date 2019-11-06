@@ -1,7 +1,7 @@
 import React from 'react';
 import Home from '../components/Home/'
 
-const HomeContainer= ()=>{
+export default ()=>{
   const text={
           header:"Manage all the Foreign Exchanges in one place",
           button:"Start Free",
@@ -10,6 +10,3 @@ const HomeContainer= ()=>{
   
     return <Home text={text}/>
 }
-
-
-export default HomeContainer
