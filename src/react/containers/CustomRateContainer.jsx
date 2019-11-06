@@ -1,11 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import CreateComponent from '../components/Create'
+import CustomRateForm from '../components/CustomRateForm'
 
-const ExampleContainer= ({isDesktop})=>{
+const CustomRateContainer= ({isDesktop})=>{
     
-    return <CreateComponent isDesktop={isDesktop}/>
+    return <CustomRateForm isDesktop={isDesktop}/>
 }
 
 /* react-redux settings */
@@ -15,4 +15,4 @@ const mapStateToProps=(state,ownProps)=>({
 const mapDispatchToProps=(dispatch,ownProps)=>({
 })
 
-export default connect(mapStateToProps,mapDispatchToProps)(ExampleContainer)
+export default connect(mapStateToProps,mapDispatchToProps)(CustomRateContainer)

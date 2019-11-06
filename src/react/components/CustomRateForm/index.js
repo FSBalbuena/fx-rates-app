@@ -1,56 +1,45 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import {Background,
+import {FormBackground,
      FormBox,
       FormButton,
-      Rate} from './StoryBook'
+      Rate} from './components'
 import FeePicker from './FeePicker';
 import CurrencySelector from './CurrencySelector';
 
 
-const styles=isDesktop=>({
-    background:{
-        display:"flex",
-        justifyContent:"center",
-        alignItems:"center",
-        padding:isDesktop?"6vh 0px":"16vw 0px"
-    }
-})
-
-const Create=({isDesktop})=>{
-    const classes=styles(isDesktop)
-    return (
-        <Background bg={"#4E42E2"} style={classes.background}>
+const CreateComponent=()=>(
+        <FormBackground bg={"#4E42E2"} >
            <FormBox>
                <CurrencySelector 
                name="base"
                label="Base currency"
-               options={["USD","EUR"]}
+               options={[{value:"EUR",content:"EUR"},{value:"USD",content:"USD"}]}
                />
                <CurrencySelector 
                name="destination"
                label="Destination currency"
-               options={["USD","EUR"]}
+               options={[{value:"EUR",content:"EUR"},{value:"USD",content:"USD"}]}
                />
                <Rate>USD/ARS : 64.00</Rate>
                <FeePicker
                label={"Fee"}
                inputName={"fee.value"}
                selectName={"fee.type"}
-               feeTypes={[{value:"amount",text:"$"}
-               ,{value:"percent",text:"%"}]}
+               feeTypes={[{value:"amount",content:"$"}
+               ,{value:"percent",content:"%"}]}
                />
                <FormButton >
                    Create
               </FormButton>
            </FormBox>
-        </Background>
+        </FormBackground>
     )
+
+CreateComponent.propTypes={
+    
 }
-Create.propTypes={
-    isDesktop:PropTypes.bool
+CreateComponent.defaultProps={
+    
 }
-Create.defaultProps={
-    isDesktop:false
-}
-export default Create
+export default CreateComponent

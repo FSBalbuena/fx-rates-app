@@ -1,18 +1,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import {FormLabel,FormSelect} from './StoryBook'
+import {FormLabel,FormSelect} from './components'
+import OptionList from '../OptionList';
 
 /*Part of Create component*/
 const CurrencySelector=({label,name,options})=>( 
             <FormLabel>{label}
                 <FormSelect name={name}>
-                    {options.map(option=>(
-                        <option key={option}
-                        value={option}
-                        >
-                        {option}
-                        </option>
-                    ))}
+                    <OptionList options={options}/>
                 </FormSelect>
             </FormLabel>)
 

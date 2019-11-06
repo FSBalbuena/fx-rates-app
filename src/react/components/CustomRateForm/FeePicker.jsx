@@ -1,25 +1,21 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import {FlexDiv,
+import {FeeWrapper,
      FormLabel,
      FormInput,
-     FeeSelector} from './StoryBook'
+     FeeSelector} from './components'
+import OptionList from '../OptionList';
 
 /*Part of Create component */
 
 const FeePicker=({label,feeTypes,inputName,selectName})=>(
     <FormLabel>{label}
-         <FlexDiv>
+         <FeeWrapper>
          <FormInput name={inputName} />
          <FeeSelector name={selectName} >
-            {feeTypes.map(type=>(
-                <option key={type.value}
-                value={type.value}>
-                {type.text}
-                </option>
-            ))}
+            <OptionList options={feeTypes}/>
          </FeeSelector>
-         </FlexDiv>
+         </FeeWrapper>
     </FormLabel>
 )
 

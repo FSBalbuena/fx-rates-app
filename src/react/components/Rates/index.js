@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import {RatesBackground,Selector, Title} from './components'
 import SkeletonPairList from '../skeleton/SkeletonPairList'
-import RatesPairList from './RatesPairList'
+import RatesPairList from '../Cards/RatesPairList'
 import OptionList from '../OptionList';
 
 
