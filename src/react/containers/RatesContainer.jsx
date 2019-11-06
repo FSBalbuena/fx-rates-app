@@ -1,25 +1,25 @@
 import React,{useEffect} from 'react';
 import { connect } from 'react-redux';
 import {fetchSymbols} from '../../redux/actions/symbols-actions'
-import {fetchCurrentRate} from '../../redux/actions/currentRate-actions'
+import {fetchRates} from '../../redux/actions/rates-actions'
 import RatesComponent from '../components/Rates'
 import _ from 'lodash'
-const RatesContainer= ({fetchSymbols,fetchCurrentRate,currentRate,ui,symbols})=>{
+const RatesContainer= ({fetchSymbols,fetchRates,rates,ui,symbols})=>{
     useEffect(
         ()=>{
             _.isEmpty(symbols.data)?
             fetchSymbols():
-            fetchCurrentRate(symbols.data[0])
+            fetchRates(symbols.data[0])
         },[symbols.data]
     )
-    const handleChange=(e)=>fetchCurrentRate(e.target.value)
+    const handleChange=(e)=>fetchRates(e.target.value)
     
     const data={
         symbols:symbols.data,
         isDesktop:ui.isDesktop,
         loading:ui.loading,
         handleChange,
-        pairs:currentRate.data
+        pairs:rates.data
         
     }
     return symbols.loading?
@@ -35,11 +35,11 @@ const RatesContainer= ({fetchSymbols,fetchCurrentRate,currentRate,ui,symbols})=>
 const mapStateToProps=(state,ownProps)=>({
     ui:state.ui,
     symbols:state.symbols,
-    currentRate:state.currentRate
+    rates:state.rates
 })
 const mapDispatchToProps=(dispatch,ownProps)=>({
     fetchSymbols:()=>dispatch(fetchSymbols()),
-    fetchCurrentRate:(base)=>dispatch(fetchCurrentRate(base))
+    fetchRates:(base)=>dispatch(fetchRates(base))
 })
 
 export default connect(mapStateToProps,mapDispatchToProps)(RatesContainer)

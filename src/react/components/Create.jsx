@@ -1,6 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import {Background, FormBox, FormLabel,FormInput,Text, FormButton} from './StoryBook'
+import {Background,
+     FormBox,
+      FormLabel,
+      FormInput,
+      FormButton,
+      Rate,
+      FormSelect} from './StoryBook'
 
 
 const styles=isDesktop=>({
@@ -8,14 +14,22 @@ const styles=isDesktop=>({
         display:"flex",
         justifyContent:"center",
         alignItems:"center",
-        padding:"16vw 0px"
+        padding:isDesktop?"6vh 0px":"16vw 0px"
     },
-    rate:{
-        color:"#4488FF",
-        textAlign:"center",
-        margin:"6.56vw 0px"
+    feeWrapper:{
+        display:"flex",
+        justifyItems:"center",
+        alignItems:"center",
+        width:"100%"        
+    },
+    feeSelector:{
+        width:"30%",
+        borderRadius:isDesktop?"0px 0.735vh 0.735vh 0px":"0px 1.56vw 1.56vw 0px"
+    },
+    feeInput:{
+        width:"70%",
+        borderRadius:isDesktop?"0.735vh 0px 0px 0.735vh":"1.56vw 0px 0px 1.56vw"
     }
-    
 })
 
 const RatesComponent=({isDesktop})=>{
@@ -23,19 +37,27 @@ const RatesComponent=({isDesktop})=>{
     return (
         <Background bg={"#4E42E2"} style={classes.background}>
            <FormBox>
+               {["base","destination"].map(symbol=>(
+                   <FormLabel>Base Currency
+                   <FormSelect name="symbol">
+                   <option value="USD">USD</option>
+                   <option value="ARS">ARS</option>
+                   </FormSelect>
+                  </FormLabel>
+               ))}
+               <Rate>USD/ARS : 64.00</Rate>
                <FormLabel>Base Currency
-                    <FormInput value={"USD"}/>
-               </FormLabel>
-               <FormLabel>Destination Currency
-                    <FormInput value={"USD"}/>
-               </FormLabel>
-               <Text style={classes.rate}>USD/ARS : 64.00</Text>
-               <FormLabel>Add Fee
-                    <FormInput value={"USD"}/>
+                <div style={classes.feeWrapper}>
+                <FormInput style={classes.feeInput}/>
+                <FormSelect style={classes.feeSelector}>
+                    <option value="amount">$</option>
+                    <option value="percent">%</option>
+                </FormSelect>
+                </div>
                </FormLabel>
                <FormButton >
                    Create
-               </FormButton>
+              </FormButton>
            </FormBox>
         </Background>
     )

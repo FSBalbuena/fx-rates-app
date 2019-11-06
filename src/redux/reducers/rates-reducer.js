@@ -1,8 +1,8 @@
 import {
-    FETCH_CURRENT_RATE,
-    CLEAR_CURRENT_RATE,
-    SUCCESS_ON_FETCH_CURRENT_RATE,
-    ERROR_ON_FETCH_CURRENT_RATE
+    FETCH_RATES,
+    CLEAR_RATES,
+    SUCCESS_ON_FETCH_RATES,
+    ERROR_ON_FETCH_RATES
     } from '../constants';
     
 const defaultState={
@@ -13,13 +13,13 @@ const defaultState={
 
 export default (state=defaultState,action)=>{
     switch (action.type) {
-        case FETCH_CURRENT_RATE:
+        case FETCH_RATES:
             return Object.assign({},state,{loading:true,error:{}});
-        case CLEAR_CURRENT_RATE:
+        case CLEAR_RATES:
             return Object.assign({},state,{data:[],error:{}});
-        case SUCCESS_ON_FETCH_CURRENT_RATE:
+        case SUCCESS_ON_FETCH_RATES:
             return Object.assign({},state,{loading:false,error:{},data:action.data});
-        case ERROR_ON_FETCH_CURRENT_RATE:
+        case ERROR_ON_FETCH_RATES:
             return Object.assign({},state,{loading:false,error:action.data});
         default:
             return Object.assign({},state);

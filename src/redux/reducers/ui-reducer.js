@@ -5,9 +5,12 @@ import {
     UI_STOP_LOADING,
     UI_SET_DESKTOP,
     UI_CLEAR_DESKTOP,
-    FETCH_CURRENT_RATE,
-    SUCCESS_ON_FETCH_CURRENT_RATE,
-    ERROR_ON_FETCH_CURRENT_RATE
+    FETCH_RATES,
+    SUCCESS_ON_FETCH_RATES,
+    ERROR_ON_FETCH_RATES,
+    FETCH_SINGLE_RATES_PAIR,
+    SUCCESS_ON_FETCH_SINGLE_RATES_PAIR,
+    ERROR_ON_FETCH_SINGLE_RATES_PAIR
     } from '../constants';
     
 const defaultState={
@@ -23,11 +26,14 @@ export default (state=defaultState,action)=>{
         case UI_CLEAR_ERRORS:
             return Object.assign({},state,{error:{}});
         case UI_LOADING:
-        case FETCH_CURRENT_RATE:
+        case FETCH_RATES:
+        case FETCH_SINGLE_RATES_PAIR:
             return Object.assign({},state,{loading:true});
         case UI_STOP_LOADING:
-        case SUCCESS_ON_FETCH_CURRENT_RATE:
-        case ERROR_ON_FETCH_CURRENT_RATE:
+        case SUCCESS_ON_FETCH_RATES:
+        case ERROR_ON_FETCH_RATES:
+        case SUCCESS_ON_FETCH_SINGLE_RATES_PAIR:
+        case ERROR_ON_FETCH_SINGLE_RATES_PAIR:
             return Object.assign({},state,{loading:false});
         case UI_SET_DESKTOP:
         case UI_CLEAR_DESKTOP:
