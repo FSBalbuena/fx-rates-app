@@ -8,10 +8,8 @@ A simple FX Rate tha allows creation of new rates with a fee.
 ## Routes
 *   **/** - Home
 *   **/rates** - Display availables rates
-    (This route accepts /rates?currency=[CURRENCY])
-*   **/create** - Creates a new rate for a base 
-currency
-    (This route accepts /create?currency=[CURRENCY]&fee=[fee])
+*   **/create** - Creates a new rate for a base currency
+*   **/custom-rate** - Shows de custom rate
 
 
 ## API
@@ -19,10 +17,10 @@ The API of the app had being thought to be a handler for Fixer.oi`s API response
 
 |   method  |   route   |   response schema |
 |-----------|-----------|-------------------|
-|   GET     |   api/rates       |   [Symbols](### Get /)|
-|   GET     |   api/rates/:id       |   [pair of rates](### Get rates/:id)|
-|   POST     |   api/rates       |   [rates](### Post /)|
-
+|   GET     |   api/rates       |   [Symbols](###Get-/)|
+|   GET     |   api/rates/:id       |   [pair of rates](###Get-rates/:id)|
+|   POST     |   api/rates       |   [rates](###Post-/)|
+|   POST    |   api/rates/custom-rate   |   [custom rate](###-Post-/custom-rate) |
 
 ### Get /
 It will return a list with available currency symbols on string.
@@ -167,4 +165,64 @@ the :id will be our base currency, and the API will return the pairs rates for t
         }
     ```
 
+### Post /custom-rate
 
+*   **Body request**
+    We must provide :
+    ```js
+        {
+        	base:string,//symbol
+        	destination:string,//symbol
+        	fee:{
+        		type:string,//amount or percent
+        		value:number
+        	}
+        }
+        //Example
+        {
+        	base:"USD",
+        	destination:"ARS",
+        	fee:{
+        		type:"amount",
+        		value:10
+        	}
+        }
+    ```
+*   **Body response**
+    An example of api 2xx response:
+    ```js
+        {
+            "name": "USD/ARS",
+            "rate": 59.64922,
+            "newRate": 69.64922,
+            "fee": {
+                "percent": 16.76468,
+                "amount": 10
+            }
+        }
+    ```
+*   **Error**
+    this error response checking for type and existance of all body request`s fields:
+    ```js
+    //body checked error
+        {
+            "errors": {
+                base: [
+                    "Its not an available symbol"
+                ],
+                destination: [
+                    "Its not an available symbol"
+                ],
+                fee: [
+                    "Not available fee`s type",
+                    "Fee value must be a number",
+                    "Fee value must be greater than cero"
+                ]
+            }
+         }
+    //general error due to a bad fetch on Fixer API
+        {
+            message:"something went wrong"
+        }
+}
+    ```
