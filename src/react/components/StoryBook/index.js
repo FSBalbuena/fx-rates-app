@@ -43,6 +43,7 @@ export const Text=WithLayout(styled.p`
 font-family: Roboto;
 font-style: normal;
 font-weight: bold;
+word-break:break-all;
 font-size:${props=>props.isDesktop?"1.21vw":"4.37vw"} ;
 line-height:${props=>props.isDesktop?"1.45vw":"5.93vw"} ;
 text-align: ${ props=>props.textAlign|| "left"};
