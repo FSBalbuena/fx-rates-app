@@ -1,38 +1,43 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import {RatesBackground,Selector, Title} from './components'
-import SkeletonPairList from '../skeleton/SkeletonPairList'
+import SkeletonPairList from './SkeletonPairList'
 import RatesPairList from '../Cards/RatesPairList'
 import OptionList from '../OptionList';
+import {Error} from '../StoryBook'
 
-
-const RatesComponent=({options,title,handleChange,pairs,loading})=>(
+const RatesComponent=({options,text,handleChange,pairs,loading,error})=>(
         <RatesBackground >
-            <Title>{title}</Title>
-            <Selector name="base"
-            onChange={handleChange}>
-               <OptionList options={options}/>
-            </Selector>
-             {loading?
-             <SkeletonPairList />
-             :
-             <RatesPairList pairs={pairs}/>}
+            <Title>{text.title}</Title>
+            {error?
+            <Error>{text.error}</Error>
+            :<>
+                <Selector name="base"
+                    onChange={handleChange}>
+                   <OptionList options={options}/>
+                </Selector>
+                {loading?
+                <SkeletonPairList />
+                :
+                <RatesPairList pairs={pairs}/>
+                }
+             </>}
         </RatesBackground>
     )
 
 RatesComponent.propTypes={
     options:PropTypes.array,
-    title:PropTypes.string,
+    text:PropTypes.object,
     handleChange:PropTypes.func,
     pairs:PropTypes.array,
     loading:PropTypes.bool,
+    error:PropTypes.bool,
 
 }
 RatesComponent.defaultProps={
-    symbols:[],
-    title:"Title",
-    handleChange:()=>console.log("changes on rates"),
+    options:[],
     pairs:[],
-    loading:true
+    loading:true,
+    error:false
 }
 export default RatesComponent

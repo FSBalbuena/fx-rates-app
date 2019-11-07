@@ -66,3 +66,7 @@ font-family: Roboto;
 font-style: normal;
 font-weight: bold;
 `
+
+export const Error=styled.small`
+color:red
+`

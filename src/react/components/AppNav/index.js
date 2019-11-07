@@ -10,7 +10,7 @@ const AppNav=({links,background,pathname})=>(
             <NavLink 
             key={link.text}
             {...link}
-            active={pathname===link.to}
+            active={pathname===link.to?1:0}
             >
                 {link.text}
             </NavLink>))}

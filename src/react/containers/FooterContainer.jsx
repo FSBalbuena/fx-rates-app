@@ -6,7 +6,7 @@ import FooterComponent from '../components/Footer/'
 const FooterContainer= ({pathname})=>{
     const data={
         background:pathname==="/home"?"#272D3A":null,
-        text:"Settle Currency Chalenge"
+        text:"Settle Currency Challenge"
     }
     
     return <FooterComponent {...data}/>

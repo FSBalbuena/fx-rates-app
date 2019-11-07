@@ -16,19 +16,18 @@ const RatesContainer= ({fetchSymbols,fetchRates,rates,loading,symbols})=>{
     
     const data={
         options:symbols.data.map(symbol=>({value:symbol,content:symbol})),
-        title:"Select a currency",
         loading,
+        loadingSymbols:symbols.loading,
+        error:!(_.isEmpty(symbols.error) && _.isEmpty(rates.error)),
         handleChange,
-        pairs:rates.data
+        pairs:rates.data,
+        text:{
+            title:"Select a currency",
+            error:"Something Happend"
+        }
         
     }
-    return symbols.loading?
-    <h1>loading...</h1>
-    :
-    !_.isEmpty(symbols.error)?
-    <h1>{symbols.error}</h1>
-    :
-    <RatesComponent {...data}/>
+    return <RatesComponent {...data}/>
 }
 
 /* react-redux settings */

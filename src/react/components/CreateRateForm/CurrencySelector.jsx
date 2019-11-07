@@ -2,13 +2,18 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import {FormLabel,FormSelect} from './components'
 import OptionList from '../OptionList';
+import { Field } from 'formik';
 
 /*Part of Create component*/
-const CurrencySelector=({label,name,options})=>( 
+const CurrencySelector=({name,label,options,handleChange})=>( 
             <FormLabel>{label}
-                <FormSelect name={name}>
-                    <OptionList options={options}/>
-                </FormSelect>
+                <Field name={name}>
+                    {({field,form})=>(
+                    <FormSelect {...field} onChange={handleChange}>
+                        <OptionList options={options}/>
+                    </FormSelect>
+                    )}
+                </Field>
             </FormLabel>)
 
 CurrencySelector.propTypes={
