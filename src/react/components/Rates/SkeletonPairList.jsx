@@ -4,9 +4,8 @@ import {CardText,CardList} from '../Cards'
 import RatesCard from '../Cards/RatesCard'
 
     
-const SkeletonPairList=({cards})=>{
+const SkeletonPairList=({cards,text})=>{
     const examples=new Array(cards).fill(1)
-    const text="********"
     return (
         <CardList>
         {examples.map((num,idx)=>(
@@ -24,9 +23,11 @@ const SkeletonPairList=({cards})=>{
 }
 
 SkeletonPairList.propTypes={
-    cards:PropTypes.number
+    cards:PropTypes.number,
+    text:PropTypes.string
 }
 SkeletonPairList.defaultProps={
-    cards:3
+    cards:3,
+    text:"********"
 }
 export default SkeletonPairList

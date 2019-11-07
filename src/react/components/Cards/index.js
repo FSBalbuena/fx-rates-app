@@ -37,5 +37,5 @@ color: #FFFFFF;
 export const CardText=WithLayout(styled(Text)`
 color: #848484;
 padding:${props=>props.isDesktop?"0.78vw 1.56vw":"2.81vw 5.62vw"};
-margin:0px
+margin:0px;
 `)

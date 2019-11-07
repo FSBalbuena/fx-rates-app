@@ -16,7 +16,7 @@ export default (state=defaultState,action)=>{
         case CREATE_CUSTOM_RATE:
             return Object.assign({},state,{loading:true,error:{}});
         case CLEAR_CUSTOM_RATE:
-            return Object.assign({},state,{data:{},error:{}});
+            return Object.assign({},state,{data:{}});
         case SUCCESS_ON_CREATE_CUSTOM_RATE:
             return Object.assign({},state,{loading:false,error:{},data:action.data});
         case ERROR_ON_CREATE_CUSTOM_RATE:

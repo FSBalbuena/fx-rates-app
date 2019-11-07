@@ -4,18 +4,27 @@ import {FeeWrapper,
      FormLabel,
      FormInput,
      FeeSelector} from './components'
+import Error from './Error'
 import OptionList from '../OptionList';
+import { Field } from 'formik';
 
 /*Part of Create component */
 
-const FeePicker=({label,feeTypes,inputName,selectName})=>(
+const FeePicker=({name,label,feeTypes})=>(
     <FormLabel>{label}
          <FeeWrapper>
-         <FormInput name={inputName} />
-         <FeeSelector name={selectName} >
+        <Field name={`${name}.value`} type={"number"}>
+        {({field})=><FormInput {...field}/>}
+        </Field>
+        <Field name={`${name}.type`}>
+        {({field})=>(
+        <FeeSelector {...field}>
             <OptionList options={feeTypes}/>
-         </FeeSelector>
+         </FeeSelector>)}
+        </Field>
          </FeeWrapper>
+        <Error name={`${name}.value`}/>
+        <Error name={`${name}.type`}/>
     </FormLabel>
 )
 

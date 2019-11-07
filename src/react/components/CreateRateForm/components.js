@@ -5,6 +5,7 @@ import {Background,
      Button,
      BaseSelector,
      Text} from '../StoryBook'
+import { ErrorMessage } from 'formik';
 
 
 
@@ -96,7 +97,7 @@ export const FormInput=WithLayout(styled.input`
 export const Rate=WithLayout(styled(Text)`
     font-size:${props=>props.isDesktop?"2vh":"4.37vw"} ;
     line-height:${props=>props.isDesktop?"2.4vh":"5.93vw"} ;
-    margin:4vmin 0px;
+    margin:${props=>props.isDesktop?"2vh 0px":"4vw 0px"};
     color:#4488FF;
     text-align:center;
 `)

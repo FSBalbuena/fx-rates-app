@@ -19,20 +19,21 @@ import axios from 'axios'
   const onCreatingCustomRate=()=>({
         type:CREATE_CUSTOM_RATE
         })
+
   const onClearingCustomRate=()=>({
         type:CLEAR_CUSTOM_RATE
         })
 
-
       
 export const createCustomRate=(body)=>dispatch=>{
       dispatch(onCreatingCustomRate())
-      return axios.post(`api/rates/custom-rate`,body)
+      return axios.post("/api/rates/custom-rate",body)
       .then(res=>res.data)
-      .then(data=>dispatch(setCustomRate(data.rates)))
+      .then(data=>dispatch(setCustomRate(data)))
       .catch(err=>dispatch(setCustomRateError(err)))
     }
 
+    //Clears the data but not the errors
 export const clearCustomRate=()=>dispatch=>{
       dispatch(onClearingCustomRate())
     }
