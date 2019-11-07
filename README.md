@@ -224,5 +224,4 @@ the :id will be our base currency, and the API will return the pairs rates for t
         {
             message:"something went wrong"
         }
-}
     ```
